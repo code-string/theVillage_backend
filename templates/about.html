@@ -1,0 +1,205 @@
+{% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TheVillage</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Fonts
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+
+<!-- Stylesheet
+    ================================================== -->
+    <!-- Libraries -->
+    <link rel="stylesheet" href="{% static 'css/plan.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.css' %}">
+    <!-- Libraries -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/nivo-lightbox.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/default.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand page-scroll" href="{% url 'index' %}"><img id="brand" src="{% static 'img/vill.jfif' %}" alt="logo" /></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'about' %}" class="page-scroll">About</a></li>
+          <li><a href="{% url 'plans:plan_list' %}" class="page-scroll">Plans</a></li>
+          <li><a href="{% url 'contact_us'%}" class="page-scroll">Contact</a></li>
+          <li><a href="{% url 'events:list_events'%}" class="page-scroll">Events</a></li>
+          <li><a href="{% url 'blog:view_posts'%}" class="page-scroll">Blog</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'account_logout' %}" class="page-scroll">Log out</a></li>
+          {% else %}
+          <li><a href="{% url 'account_login' %}" class="page-scroll">Log in</a></li>
+          <li><a href="{% url 'account_signup' %}" class="page-scroll">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+  </nav>
+
+<!-- {% block content %} -->
+{% for about in abouts %}
+
+
+<section>
+    <div id="about">
+        <div class="container">
+            <div class="section-title text-center center">
+                <h2>Our Story</h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 text-center"> <img style="display: block; height: auto; max-width: 100%;" src="{{about.about_image.url }}"
+                        class="img-resposive about-title" alt=""> </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="about-text">
+                        <!-- <h3>The Studio</h3> -->
+                        <p>The Village is a co-working space served with motivation and innovation that is focused
+                            on Community building for Freelancers, Startups, and Enterprises, who have a strong
+                            desire for Productivity. Our success story is hinged on the growth and success story of
+                            our clients.</p>
+                        <!-- <h3>How We Work</h3> -->
+                        <p>In addition to providing workspace, the village serves as a platform for hosting events
+                            relevant to professionals and entrepreneurs by partnering with leading organizations in
+                            Nigeria. The village is not just a home base but a community where entrepreneurs can
+                            flourish. </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="container-fluid our-values">
+            <div class="row">
+                <div class="col-xs-12 col-md-4 col-lg-4 h-100 text-center card">
+                    <div class="img-mission" style=" padding: 5px;">
+                        <img style="display: block; max-width: 100%; height: auto;" src="{{ about.mission_image.url }}" alt="" class="img-fluid about-icon">
+                    </div>
+                    <div class="text">
+                        <h4 class="">Mission</h4>
+                        <p>To create a conducive working environment for seamless co-working experience to foster
+                            creativity,
+                            innovation, and networking,
+                            focused on achieving productivity and success. </p>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <div class="col-xs-12 col-md-4 col-lg-4 h-100 text-center card">
+                    <div class="img-mission" style=" padding: 5px; padding-bottom:53px;">
+                        <img src="{{ about.visions_image.url }}" alt="" class="img-fluid about-icon">
+                    </div>
+                    <div class="text">
+                        <h4 class="">Vision</h4>
+                        <p>Foster a community that bolsters creative and innovative partnerships.</p>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <div class="col-xs-12 col-md-4 col-lg-4 h-100 text-center card">
+                    <div class="img-mission" style=" padding: 5px;">
+                        <img style="display: block; max-width: 100%; height: auto;" src="{{ about.value_image.url }}" alt="" class="img-fluid" style="width: 100px; height:100px">
+                    </div>
+                    <div class="text " style="margin-top: 50px; padding-bottom:40px">
+                        <h4 class="">Core Values</h4>
+                        <ul>
+                            <li style="font-size: 1.4rem;">&#10003; Productivity</li>
+                            <li style="font-size: 1.4rem;">&#10003; Community</li>
+                            <li style="font-size: 1.4rem;">&#10003; Togetherness and Collaboration</li>
+                            <li style="font-size: 1.4rem;">&#10003; Diversity and Sustainability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- <div class="section-title text-center center">
+                <h2 >Our Segmentations</h2>
+                <hr>
+            </div> -->
+            
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="text-center"> <img style="display: block; height: auto; max-width: 100%;" src="{{ about.about_image.url }}"
+                            class="img-fluid about-title" alt=""> </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="about-text">
+                        <h3>Startups</h3>
+                    <p>We are a startup so we know the challenges faced by startups.
+                        Access to accommodation goes beyond an offer of meeting and work rooms but as one of us,
+                        you automatically enjoy our community of mentors and developers around.</p>
+
+                    <h3>Small and Medium Enterprises</h3>
+                    <p>Small teams and companies make up a growing part of the co-working space market. 
+                        You would benefit from our events and networking opportunities to build connections with possible clients, investors and business professionals.</p>
+
+                    <h3>Enterprise</h3>
+                    <p>We got you covered in your business meetings, conferences, or expansion of office. 
+                        You also stand to enjoy our community of innovators and business professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<!-- {% endblock content%} -->
+
+<div id="footer">
+    <div class="container text-center">
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.instagram.com/villagedotng"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/thevillage"><i class="fa fa-linkedin-square"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+      <div style="color: #fff;">371, Borno way, Spencer Street, Alagomeji-Yaba, Lagos</div>
+      <div>
+        <p>&copy; 2020 the Village</p>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/nivo-lightbox.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'lib/js/main.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+<script src="{% static 'lib/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+

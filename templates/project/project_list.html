@@ -1,0 +1,8 @@
+<h1>Welcome to project lists</h1>
+
+{% for product in products %}
+    <div>
+        <img src="{{product.avatar.url}}" class="rounded-circle" width="150", height="150">
+        <h1>{{product.title}}</h1>
+    </div>
+{% endfor %}

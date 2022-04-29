@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="events">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-center">
+                <h2>Events</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!-- <h1>Events Page</h1> -->
+    {% if event %}
+    {%else%}
+    <div class="container">
+        <div class="row">
+            <div id="notice">
+                <h2>No event yet </h2>
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+    
+</section>
+{% endblock content %}

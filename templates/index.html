@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+<!-- Navigation
+    ==========================================-->
+{% block content %}
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1 style="font-family: 'IBM Plex Sans', sans-serif;"><strong>The Village</strong> <br> CO-WORKING IN THE HEART</h1>
+            <p>The spirit of coworking allows you to find co-workers who are worth working with</p>
+            <a href="{% url 'plans:plan_list'%}" class="btn btn-custom btn-lg page-scroll">View Plans</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- About Section -->
+<div id="about">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2 style="font-family: 'IBM Plex Sans', sans-serif;">Our Story</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 text-center"> <img src="{% static 'img/about.jpg' %}" class="img-responsive about-title" alt=""> </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="about-text">
+          <h3>The Village</h3>
+          <p>The Village is a co-working space served with motivation and innovation that is focused on Community building for Freelancers, Startups, and Enterprises, who have a strong desire for Productivity.</p>
+          <h3>How We Work</h3>
+          <p>the village serves as a platform for hosting events relevant to professionals and entrepreneurs by partnering with leading organizations in Nigeria. The village is not just a home base but a community where entrepreneurs can flourish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <div class=" section-title text-center center">
+      <h2 style="font-family: 'IBM Plex Sans', sans-serif;">Our Services</h2>
+      <hr>
+    
+    </div>
+    <div class="row">
+      {% for service in services %}
+      <div class="col-xs-12 col-sm-4 service"> <img src="{{ service.service_image.url }}" class="img-responsive" alt="">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- Portfolio Section -->
+<!--  -->
+<!-- Team Section -->
+<!-- <div id="team" class="text-center">
+  <div class="overlay">
+    <div class="container">
+      <div class=" section-title text-center center">
+        <h2>Meet the Team</h2>
+        <hr>
+        
+      </div>
+      <div id="row">
+        {% for team in teamembers %}
+        <div class="col-md-3 col-sm-6 team">
+          <div class="thumbnail"> <img src="{{ team.team_image.url }}" alt="..." class="team-img"></div>
+            <div class="caption">
+              <h3>{{team.title}}</h3>
+              <p>{{ team.description }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="happy-client">
+        {% for client in clients %}
+        <div class="clients">
+          <img src="{{ client.client_image.url }}" alt="client-image" />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div> -->
+</div>
+<!-- Contact Section -->
+
+{% endblock content %}

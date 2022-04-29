@@ -1,0 +1,126 @@
+{% load static %}
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TheVillage</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Favicons
+    ================================================== -->
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+
+<!-- Stylesheet
+    ================================================== -->
+    <!-- Libraries -->
+    <link rel="stylesheet" href="{% static 'css/plan.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'lib/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.css' %}">
+    <!-- Libraries -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/nivo-lightbox.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/default.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+</head>
+<body>
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand page-scroll" href="{% url 'index' %}"><img id="brand" src="{% static 'img/vill.jfif' %}" alt="logo" /></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'about' %}" class="page-scroll">About</a></li>
+          <li><a href="{% url 'plans:plan_list' %}" class="page-scroll">Plans</a></li>
+          <li><a href="{% url 'contact_us'%}" class="page-scroll">Contact</a></li>
+          <li><a href="{% url 'events:list_events'%}" class="page-scroll">Events</a></li>
+          <li><a href="{% url 'blog:view_posts'%}" class="page-scroll">Blog</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'account_logout' %}" class="page-scroll">Log out</a></li>
+          {% else %}
+          <li><a href="{% url 'account_login' %}" class="page-scroll">Log in</a></li>
+          <li><a href="{% url 'account_signup' %}" class="page-scroll">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+  </nav>
+
+<div class="container">
+  <div id="intro"></div>
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-md-4">
+      <div id="blog-contents" class="card">
+        <div id="blog-image">
+          <img class="card-img-top img-fluid" src="{{post.post_image.url}}" alt="Card image cap">
+        </div>
+        <div id="blog-body">
+          <div class="card-body">
+            <div id="topic">
+              <h5 class="card-title">{{post.title}}</h5>
+            <p>{{post.published_date | timesince}} ago</p>
+            </div>
+            
+            <p id="blog-text" lass="card-text">{{post.description | truncatechars:30}}</p>
+            <a href="/blog/{{post.id}}" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<div id="footer">
+  <div class="container text-center">
+    <div class="social">
+      <ul>
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/villagedotng"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/thevillage"><i class="fa fa-linkedin-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+      </ul>
+    </div>
+    <div style="color: #fff;">371, Borno way, Spencer Street, Alagomeji-Yaba, Lagos</div>
+    <div>
+      <p>&copy; 2020 the Village</p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/nivo-lightbox.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'lib/js/main.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+<script src="{% static 'lib/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+
+</body>

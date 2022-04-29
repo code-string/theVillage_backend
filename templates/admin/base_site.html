@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | TheVillage{% endblock %}
+
+    {% block extrastyle %}
+    <style>
+        #header {
+            background-color: #058BCC;
+            color: blueviolet;
+        }
+    </style>
+    {% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">TheVillage</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
